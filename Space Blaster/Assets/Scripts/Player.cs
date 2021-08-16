@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    [SerializeField] float gameBoardUnits = 16f;
-    [SerializeField] float mousePosition;
-
+    [Header("Config")]
     [SerializeField] float moveSpeed = 10f;
+    [SerializeField] float laserSpeed = 100f;
+
+    [Header("Attachments")]
+    [SerializeField] GameObject laser;
+    
+    [Header("Timers")]
+    [SerializeField] float refireTimer = 1f;
+    [SerializeField] float refireTime = 0f;
+    [SerializeField] bool canFire = true;
 
     float xMin, xMax;
     float yMin, yMax;
@@ -17,7 +24,9 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
+        UpdateFireTimer();
         Move();
+        Shoot();
     }
 
     
@@ -38,7 +47,26 @@ public class Player : MonoBehaviour {
         float newYPos = Mathf.Clamp((transform.position.y + deltaY), yMin, yMax);
 
         transform.position = new Vector2(newXPos, newYPos);
+    }
 
+    private void Shoot() {
+        //if (Input.GetAxis("Fire1") {
+        if (Input.GetKeyDown(KeyCode.LeftControl) && canFire) { 
+            GameObject laserBeam = Instantiate(laser, transform.position, transform.rotation);
+            laserBeam.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, laserSpeed));
+            canFire = false;
+            refireTimer = refireTime;
+        }
+    }
+
+    private void UpdateFireTimer() {
+        if (!canFire) {
+            refireTimer -= Time.deltaTime;
+            if (refireTimer <= 0) {
+                canFire = true;
+                refireTimer = 0;
+            }
+        }
     }
 
 }
