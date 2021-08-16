@@ -50,8 +50,7 @@ public class Player : MonoBehaviour {
     }
 
     private void Shoot() {
-        //if (Input.GetAxis("Fire1") {
-        if (Input.GetKeyDown(KeyCode.LeftControl) && canFire) { 
+        if (Input.GetButtonDown("Fire1") && canFire) { 
             GameObject laserBeam = Instantiate(laser, transform.position, transform.rotation);
             laserBeam.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, laserSpeed));
             canFire = false;

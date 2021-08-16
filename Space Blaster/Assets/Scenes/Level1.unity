@@ -283,11 +283,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 680da774d303069428c72258e39e9bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laser: {fileID: 7673703374147241302, guid: 70764411cf96096488d3a15396a14822, type: 3}
   moveSpeed: 10
-  laserSpeed: 100
+  laserSpeed: 850
+  laser: {fileID: 7673703374147241302, guid: 70764411cf96096488d3a15396a14822, type: 3}
   refireTimer: 0
-  refireTime: 5
+  refireTime: 0.2
   canFire: 1
 --- !u!222 &594114767
 CanvasRenderer:
