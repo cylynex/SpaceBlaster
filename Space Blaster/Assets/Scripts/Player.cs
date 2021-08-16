@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
 
     private void Start() {
         SetupBounds();
-        StartCoroutine(PrintSomething());
+        //StartCoroutine(PrintSomething());
     }
 
     private void Update() {
@@ -57,16 +57,6 @@ public class Player : MonoBehaviour {
             canFire = false;
             refireTimer = refireTime;
         }
-
-        /*
-        if (Input.GetButton("Fire1")) {
-            StartCoroutine(ContinuousFire());
-        }
-
-        if (Input.GetButtonUp("Fire1")) {
-            StopCoroutine(ContinuousFire());
-        }
-        */
     }
 
     IEnumerator ContinuousFire() {
