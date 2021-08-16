@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
 
     private void Start() {
         SetupBounds();
+        StartCoroutine(PrintSomething());
     }
 
     private void Update() {
@@ -50,12 +51,32 @@ public class Player : MonoBehaviour {
     }
 
     private void Shoot() {
-        if (Input.GetButtonDown("Fire1") && canFire) { 
-            GameObject laserBeam = Instantiate(laser, transform.position, transform.rotation);
+        if (Input.GetButton("Fire1") && canFire) { 
+            GameObject laserBeam = Instantiate(laser, transform.position, Quaternion.identity);
             laserBeam.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, laserSpeed));
             canFire = false;
             refireTimer = refireTime;
         }
+
+        /*
+        if (Input.GetButton("Fire1")) {
+            StartCoroutine(ContinuousFire());
+        }
+
+        if (Input.GetButtonUp("Fire1")) {
+            StopCoroutine(ContinuousFire());
+        }
+        */
+    }
+
+    IEnumerator ContinuousFire() {
+        yield return new WaitForSeconds(1f);
+        CreateLaser();
+    }
+
+    void CreateLaser() {
+        GameObject laserBeam = Instantiate(laser, transform.position, Quaternion.identity);
+        laserBeam.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, laserSpeed));
     }
 
     private void UpdateFireTimer() {
@@ -67,5 +88,13 @@ public class Player : MonoBehaviour {
             }
         }
     }
+
+    IEnumerator PrintSomething() {
+        print("Print somethign now.");
+        yield return new WaitForSeconds(3);
+        print("3s has passed");
+
+    }
+
 
 }
