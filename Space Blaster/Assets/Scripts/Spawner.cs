@@ -9,45 +9,37 @@ public class Spawner : MonoBehaviour {
     WaveData waveData;
     [SerializeField] int spawnIndex = 0;
     [SerializeField] int waveIndex = 0;
-    [SerializeField] int numberWaves = 2;
-    [SerializeField] float timeBetweenWaves = 5f;
     [SerializeField] bool levelFinished = false;
 
-    [Header("OLD")]
-    [SerializeField] GameObject enemy;
+    [Header("Timers")]
     [SerializeField] float spawnTimer;
     [SerializeField] float nextSpawnTime;
     [SerializeField] Transform spawnLocation;
 
     [SerializeField] List<Transform> waypoints = new List<Transform>();
 
+    GameController gameController;
+    UIController uiController;
+
     private void Start() {
+        gameController = FindObjectOfType<GameController>();
+        uiController = gameController.GetComponent<UIController>();
         ChoosePath();
         currentWave = waves[waveIndex];
         waveData = currentWave.GetWaveData();
+        uiController.SetWave(waveIndex + 1);
     }
+
 
     private void Update() {
-        Spawn();
-    }
-
-    private void Spawn() {
-        if (nextSpawnTime <= 0 && !levelFinished) {            
-
-            print("Spawn Index: " + spawnIndex);
-
-            GameObject newEnemy = Instantiate(waveData.enemy, spawnLocation.position, Quaternion.identity);
-            newEnemy.GetComponent<Enemy>().waypoints = waypoints;
-            spawnIndex++;
-            nextSpawnTime = spawnTimer;
-
-            // Check number in wave, stop if complete and go to next wave, or continue.
+        if (nextSpawnTime <= 0 && !levelFinished) {
+            SpawnEnemy();
             CheckForWaveAdvance();
-
         } else {
             nextSpawnTime -= Time.deltaTime;
         }
     }
+
 
     void ChoosePath() {
         GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
@@ -59,7 +51,7 @@ public class Spawner : MonoBehaviour {
     }
 
     void CheckForWaveAdvance() {
-        if (spawnIndex > waveData.numberOfEnemies) {
+        if (spawnIndex >= waveData.numberOfEnemies) {
             print("FINISHED WAVE");
 
             if (waveIndex == waves.Length - 1) {
@@ -68,12 +60,20 @@ public class Spawner : MonoBehaviour {
             } else {
                 nextSpawnTime = waveData.timeBetweenSpawns;
                 waveIndex++;
+                uiController.SetWave(waveIndex + 1);
                 currentWave = waves[waveIndex];
                 waveData = currentWave.GetWaveData();
                 spawnIndex = 0;
                 ChoosePath();
             }
         }
+    }
+
+    void SpawnEnemy() {
+        GameObject newEnemy = Instantiate(waveData.enemy, waveData.path.transform.position, Quaternion.identity);
+        newEnemy.GetComponent<Enemy>().waypoints = waypoints;
+        spawnIndex++;
+        nextSpawnTime = spawnTimer;
     }
 
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Wave")]
 public class Wave : ScriptableObject {
 
-    [SerializeField] public GameObject enemy;
+    [SerializeField] GameObject enemy;
     [SerializeField] GameObject spawnPoint;
     [SerializeField] GameObject path;
     [SerializeField] float timeBetweenSpawns = 0.5f;
