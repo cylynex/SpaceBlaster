@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6ec162f83823f47b202addf45013b1, type: 3}
   m_Name: Wave 2
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1834630269474746386, guid: 0d6d79e437c9ef347a6514d758db6670, type: 3}
+  enemy: {fileID: 1834630269474746386, guid: e65d31866f84b7f4ab0bfd150dd3312b, type: 3}
+  spawnPoint: {fileID: 0}
   path: {fileID: 8033341104588193305, guid: a7e6e6eabbb48374ea1b76e642fb5fd5, type: 3}
-  timeBetweenSpawns: 0.5
-  timeRandomizer: 0.5
+  timeBetweenSpawns: 12
   numberOfEnemies: 5
-  moveSpeed: 2

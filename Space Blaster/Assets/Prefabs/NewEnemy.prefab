@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 1834630269474746387}
   - component: {fileID: 1834630269474746388}
   - component: {fileID: 1834630269474746389}
-  - component: {fileID: 1834630269474746390}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: NewEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0213f2389c1d048af68a25a8c17a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
+  waypointIndex: 0
+  moveSpeed: 1
 --- !u!212 &1834630269474746389
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -84,7 +86,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0be21de42105da945af68ee49f4e782f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6fb2ebfa5fa496b4cb7cc8758d2d496f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,24 +97,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1834630269474746390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834630269474746386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbc7ccb2dd4aecd429a7c19e33b0ad80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  moveSpeed: 1
-  currentDestination: {fileID: 0}
-  finalDestination: {fileID: 0}

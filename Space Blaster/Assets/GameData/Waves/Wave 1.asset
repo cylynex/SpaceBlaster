@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Wave 1
   m_EditorClassIdentifier: 
   enemy: {fileID: 1834630269474746386, guid: 0d6d79e437c9ef347a6514d758db6670, type: 3}
+  spawnPoint: {fileID: 0}
   path: {fileID: 7505278633020684201, guid: 43b208bf131176145aa8531c01d85e25, type: 3}
-  timeBetweenSpawns: 0.5
-  timeRandomizer: 0.5
+  timeBetweenSpawns: 15
   numberOfEnemies: 5
-  moveSpeed: 2

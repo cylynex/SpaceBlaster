@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyPathing : MonoBehaviour {
 
     [SerializeField] Wave wave;
-    EnemyData enemyData;
+    //EnemyData enemyData;
     [SerializeField] List<Transform> waypoints = new List<Transform>();
     [SerializeField] float moveSpeed = 1f;
     
@@ -16,25 +16,26 @@ public class EnemyPathing : MonoBehaviour {
     [SerializeField] Transform finalDestination;
 
     private void Start() {
-        GetWaveData();
-        GetWaypoints();        
-        SetDestination();
+        //GetWaveData();
+        //GetWaypoints();        
+        //SetDestination();
     }
 
     private void Update() {
-        Move();
-        CheckDestroy();
+        //Move();
+        //CheckDestroy();
     }
 
     private void GetWaveData() {
-        enemyData = wave.GetEnemyData();
+        //enemyData = wave.GetEnemyData();
     }
 
     public List<Transform> GetWaypoints() {
-        
+        /*
         foreach (Transform waypoint in enemyData.path.transform) {
             waypoints.Add(waypoint);
         }
+        */
 
         transform.position = waypoints[0].transform.position;
         finalDestination = waypoints[waypoints.Count - 1];
