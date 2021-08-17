@@ -9,6 +9,15 @@ public class GameController : MonoBehaviour {
 
     private void Start() {
         uiController = GetComponent<UIController>();
+        UpdateScoreBoard();
+    }
+
+    public void ScorePoints(int addPoints) {
+        points += addPoints;
+        UpdateScoreBoard();
+    }
+
+    void UpdateScoreBoard() {
         uiController.SetPoints(points);
     }
 

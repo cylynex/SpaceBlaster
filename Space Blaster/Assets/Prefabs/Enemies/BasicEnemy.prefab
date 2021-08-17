@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0213f2389c1d048af68a25a8c17a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
-  waypointIndex: 0
   moveSpeed: 1
   startingHitPoints: 10
+  pointValue: 10
+  waypoints: []
+  waypointIndex: 0
   hitPoints: 0
 --- !u!212 &1834630269474746389
 SpriteRenderer:

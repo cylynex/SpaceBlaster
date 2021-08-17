@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
-    [SerializeField] public List<Transform> waypoints = new List<Transform>();
-    [SerializeField] int waypointIndex = 0;
+    [Header("Options")]
     [SerializeField] float moveSpeed;
     [SerializeField] int startingHitPoints;
+    [SerializeField] int pointValue;
+
+    [Header("Internal")]
+    [SerializeField] public List<Transform> waypoints = new List<Transform>();
+    [SerializeField] int waypointIndex = 0;
     [SerializeField] int hitPoints;
     Transform finaldestination;
+    GameController gameController;
 
     private void Start() {
         transform.position = waypoints[waypointIndex].position;
@@ -17,6 +22,8 @@ public class Enemy : MonoBehaviour {
 
         finaldestination = waypoints[waypoints.Count - 1];
         hitPoints = startingHitPoints;
+
+        gameController = FindObjectOfType<GameController>();
 
     }
 
@@ -54,14 +61,18 @@ public class Enemy : MonoBehaviour {
     void TakeDamage(int damageAmount) {
         hitPoints -= damageAmount;
         if (hitPoints <= 0) {
-            Destroy(gameObject);
+            DestroyEnemy();
         }
         UpdateColor();
     }
 
+    void DestroyEnemy() {
+        gameController.ScorePoints(pointValue);
+        Destroy(gameObject);
+    }
+
     void UpdateColor() {
         float percentHP = (((float)hitPoints / (float)startingHitPoints) * 100);
-        print("HPPERCENT: " + percentHP);
         if (percentHP < 31) {
             gameObject.GetComponent<SpriteRenderer>().color = new Color32(253, 50, 11, 255);
         } else if (percentHP < 61) {
