@@ -35,6 +35,28 @@ public class Enemy : MonoBehaviour {
     void Move() {
         if (waypointIndex < waypoints.Count) {
             transform.position = Vector2.MoveTowards(transform.position, waypoints[waypointIndex].position, moveSpeed * Time.deltaTime);
+
+            /*
+            // Determine which direction to rotate towards
+            Vector3 targetDirection = waypoints[waypointIndex].position - transform.position;
+
+            // The step size is equal to speed times frame time.
+            float singleStep = 1 * Time.deltaTime;
+
+            // Rotate the forward vector towards the target direction by one step
+            Vector2 newDirection = Vector2.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+
+            // Draw a ray pointing at our target in
+            Debug.DrawRay(transform.position, newDirection, Color.red);
+
+            // Calculate a rotation a step closer to the target and applies rotation to this object
+            transform.rotation = Quaternion.LookRotation(newDirection);
+            */
+
+            //transform.LookAt(waypoints[waypointIndex].position);
+            Vector3 dir = waypoints[waypointIndex].position - this.transform.position;
+            transform.Translate(dir.normalized * 1 * Time.deltaTime, Space.World);
+
             if (transform.position == waypoints[waypointIndex].position) {
                 NextStop();
             }

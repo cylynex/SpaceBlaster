@@ -22,11 +22,9 @@ public class Spawner : MonoBehaviour {
     UIController uiController;
 
     private void Start() {
-        gameController = FindObjectOfType<GameController>();
-        uiController = gameController.GetComponent<UIController>();
+        SetReferences();
         ChoosePath();
-        currentWave = waves[waveIndex];
-        waveData = currentWave.GetWaveData();
+        SetupWave();
         uiController.SetWave(waveIndex + 1);
     }
 
@@ -38,6 +36,19 @@ public class Spawner : MonoBehaviour {
         } else {
             nextSpawnTime -= Time.deltaTime;
         }
+    }
+
+
+    void SetReferences() {
+        gameController = FindObjectOfType<GameController>();
+        uiController = gameController.GetComponent<UIController>();
+    }
+
+
+    void SetupWave() {
+        currentWave = waves[waveIndex];
+        waveData = currentWave.GetWaveData();
+        spawnTimer = waveData.timeBetweenSpawns;
     }
 
 

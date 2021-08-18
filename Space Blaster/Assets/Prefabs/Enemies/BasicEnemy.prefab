@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6105130821712826798}
   m_Layer: 0
   m_Name: BasicEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0213f2389c1d048af68a25a8c17a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  startingHitPoints: 10
+  moveSpeed: 3
+  startingHitPoints: 4
   pointValue: 10
   waypoints: []
   waypointIndex: 0
