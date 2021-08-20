@@ -111,7 +111,8 @@ public class Enemy : MonoBehaviour {
 
     void Fire() {
         GameObject enemyShot = Instantiate(enemyProjectile, transform.position, Quaternion.identity);
-        enemyShot.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -600f));
+        //enemyShot.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -600f));
+        enemyShot.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -5f);
     }
 
 
