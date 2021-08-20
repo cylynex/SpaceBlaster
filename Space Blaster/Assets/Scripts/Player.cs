@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
     [SerializeField] bool canFire = true;
 
     UIController uiController;
+    GameController gameController;
 
     float xMin, xMax;
     float yMin, yMax;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour {
         SetupBounds();
         //StartCoroutine(PrintSomething());
         uiController = FindObjectOfType<UIController>();
+        gameController = FindObjectOfType<GameController>();
         uiController.SetPlayerHP(hitPoints);
     }
 
@@ -108,6 +110,13 @@ public class Player : MonoBehaviour {
         uiController.SetPlayerHP(hitPoints);
         if (hitPoints <= 0) {
             print("PLAYER DEAD");
+
+            if (gameController.playerLives > 0) {
+                gameController.SubtractPlayerLife();
+            }
+
+            gameController.Respawn();
+
             Destroy(gameObject);
         }
     }
