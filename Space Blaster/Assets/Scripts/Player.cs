@@ -26,6 +26,7 @@ public class Player : MonoBehaviour {
         SetupBounds();
         //StartCoroutine(PrintSomething());
         uiController = FindObjectOfType<UIController>();
+        uiController.SetPlayerHP(hitPoints);
     }
 
     private void Update() {
