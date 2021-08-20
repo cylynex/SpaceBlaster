@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour {
 
     [SerializeField] TextMeshProUGUI waveLabel;
     [SerializeField] TextMeshProUGUI pointsLabel;
+    [SerializeField] TextMeshProUGUI playerHPLabel;
 
     public void SetWave(int waveNumber) {
         waveLabel.text = "WAVE " + waveNumber;
@@ -15,6 +16,10 @@ public class UIController : MonoBehaviour {
 
     public void SetPoints(int points) {
         pointsLabel.text = points.ToString();
+    }
+
+    public void SetPlayerHP(int hp) {
+        playerHPLabel.text = hp.ToString();
     }
 
 }

@@ -8,13 +8,17 @@ public class Enemy : MonoBehaviour {
     [SerializeField] float moveSpeed;
     [SerializeField] int startingHitPoints;
     [SerializeField] int pointValue;
-
+    [SerializeField] bool canShoot;
+    [SerializeField] Vector2 shootDelayRange = new Vector2(1,2.5f);
+    [SerializeField] GameObject enemyProjectile;
+    
     [Header("Internal")]
     [SerializeField] public List<Transform> waypoints = new List<Transform>();
     [SerializeField] int waypointIndex = 0;
     [SerializeField] int hitPoints;
     Transform finaldestination;
     GameController gameController;
+    [SerializeField] float shootTimer = 0;
 
     private void Start() {
         transform.position = waypoints[waypointIndex].position;
@@ -25,10 +29,23 @@ public class Enemy : MonoBehaviour {
 
         gameController = FindObjectOfType<GameController>();
 
+        int shootSetup = Random.Range(0, 4);
+        if (shootSetup == 0) {
+            canShoot = false;
+        } else {
+            canShoot = true;
+            SetShootTimer();
+        }
+    }
+
+    void SetShootTimer() {
+        float shootRand = Random.Range(shootDelayRange.x, shootDelayRange.y);
+        shootTimer = shootRand;
     }
 
     private void Update() {
         Move();
+        CheckShoot();
         CheckFinish();
     }
 
@@ -36,24 +53,6 @@ public class Enemy : MonoBehaviour {
         if (waypointIndex < waypoints.Count) {
             transform.position = Vector2.MoveTowards(transform.position, waypoints[waypointIndex].position, moveSpeed * Time.deltaTime);
 
-            /*
-            // Determine which direction to rotate towards
-            Vector3 targetDirection = waypoints[waypointIndex].position - transform.position;
-
-            // The step size is equal to speed times frame time.
-            float singleStep = 1 * Time.deltaTime;
-
-            // Rotate the forward vector towards the target direction by one step
-            Vector2 newDirection = Vector2.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
-
-            // Draw a ray pointing at our target in
-            Debug.DrawRay(transform.position, newDirection, Color.red);
-
-            // Calculate a rotation a step closer to the target and applies rotation to this object
-            transform.rotation = Quaternion.LookRotation(newDirection);
-            */
-
-            //transform.LookAt(waypoints[waypointIndex].position);
             Vector3 dir = waypoints[waypointIndex].position - this.transform.position;
             transform.Translate(dir.normalized * 1 * Time.deltaTime, Space.World);
 
@@ -100,6 +99,19 @@ public class Enemy : MonoBehaviour {
         } else if (percentHP < 61) {
             gameObject.GetComponent<SpriteRenderer>().color = new Color32(98, 209, 250, 255);
         }
+    }
+
+    void CheckShoot() {
+        shootTimer -= Time.deltaTime;
+        if (shootTimer <= 0) {
+            Fire();
+            SetShootTimer();
+        }
+    }
+
+    void Fire() {
+        GameObject enemyShot = Instantiate(enemyProjectile, transform.position, Quaternion.identity);
+        enemyShot.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -600f));
     }
 
 

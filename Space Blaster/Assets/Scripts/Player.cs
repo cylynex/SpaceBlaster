@@ -6,15 +6,18 @@ public class Player : MonoBehaviour {
 
     [Header("Config")]
     [SerializeField] float moveSpeed = 10f;
-    [SerializeField] float laserSpeed = 100f;
+    [SerializeField] float primaryWeaponSpeed = 100f;
+    [SerializeField] int hitPoints = 5;
 
     [Header("Attachments")]
-    [SerializeField] GameObject laser;
-    
+    [SerializeField] GameObject primaryWeapon;
+        
     [Header("Timers")]
     [SerializeField] float refireTimer = 1f;
     [SerializeField] float refireTime = 0f;
     [SerializeField] bool canFire = true;
+
+    UIController uiController;
 
     float xMin, xMax;
     float yMin, yMax;
@@ -22,6 +25,7 @@ public class Player : MonoBehaviour {
     private void Start() {
         SetupBounds();
         //StartCoroutine(PrintSomething());
+        uiController = FindObjectOfType<UIController>();
     }
 
     private void Update() {
@@ -52,8 +56,8 @@ public class Player : MonoBehaviour {
 
     private void Shoot() {
         if (Input.GetButton("Fire1") && canFire) { 
-            GameObject laserBeam = Instantiate(laser, transform.position, Quaternion.identity);
-            laserBeam.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, laserSpeed));
+            GameObject mainWeapon = Instantiate(primaryWeapon, transform.position, Quaternion.identity);
+            mainWeapon.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, primaryWeaponSpeed));
             canFire = false;
             refireTimer = refireTime;
         }
@@ -65,8 +69,8 @@ public class Player : MonoBehaviour {
     }
 
     void CreateLaser() {
-        GameObject laserBeam = Instantiate(laser, transform.position, Quaternion.identity);
-        laserBeam.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, laserSpeed));
+        GameObject laserBeam = Instantiate(primaryWeapon, transform.position, Quaternion.identity);
+        laserBeam.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, primaryWeaponSpeed));
     }
 
     private void UpdateFireTimer() {
@@ -88,6 +92,21 @@ public class Player : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Enemy") {
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "EnemyWeapon") {
+            TakeDamage(collision.gameObject.GetComponent<Weapon>().damage);
+            Destroy(collision.gameObject);
+        }
+    }
+
+    public void TakeDamage(int damage) {
+        hitPoints -= damage;
+        if (hitPoints < 0) hitPoints = 0;
+        uiController.SetPlayerHP(hitPoints);
+        if (hitPoints <= 0) {
+            print("PLAYER DEAD");
             Destroy(gameObject);
         }
     }
