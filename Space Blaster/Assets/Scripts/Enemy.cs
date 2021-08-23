@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour {
     [SerializeField] bool canShoot;
     [SerializeField] Vector2 shootDelayRange = new Vector2(1,2.5f);
     [SerializeField] GameObject enemyProjectile;
+    [SerializeField] float enemyWeaponSpeed = 15f;
     
     [Header("Internal")]
     [SerializeField] public List<Transform> waypoints = new List<Transform>();
@@ -19,6 +20,9 @@ public class Enemy : MonoBehaviour {
     Transform finaldestination;
     GameController gameController;
     [SerializeField] float shootTimer = 0;
+
+    [Header("FX")]
+    [SerializeField] GameObject explosion;
 
     private void Start() {
         transform.position = waypoints[waypointIndex].position;
@@ -89,6 +93,9 @@ public class Enemy : MonoBehaviour {
 
     void DestroyEnemy() {
         gameController.ScorePoints(pointValue);
+        GameObject exploder = Instantiate(explosion, transform.position, Quaternion.identity);
+        exploder.GetComponent<ParticleSystem>().Play();
+        Destroy(exploder, 2f);
         Destroy(gameObject);
     }
 
@@ -111,8 +118,7 @@ public class Enemy : MonoBehaviour {
 
     void Fire() {
         GameObject enemyShot = Instantiate(enemyProjectile, transform.position, Quaternion.identity);
-        //enemyShot.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -600f));
-        enemyShot.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -5f);
+        enemyShot.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -enemyWeaponSpeed);
     }
 
 

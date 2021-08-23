@@ -33,10 +33,15 @@ public class GameController : MonoBehaviour {
 
     public void Respawn() {
         if (playerLives > 0) {
-            GameObject newPlayer = Instantiate(player, spawnLocation.position, Quaternion.identity);
+            StartCoroutine(SpawnNewPlayer());
         } else {
             SceneManager.LoadScene("GameOver");
         }
+    }
+
+    IEnumerator SpawnNewPlayer() {
+        yield return new WaitForSeconds(2f);
+        GameObject newPlayer = Instantiate(player, spawnLocation.position, Quaternion.identity);
     }
 
 }

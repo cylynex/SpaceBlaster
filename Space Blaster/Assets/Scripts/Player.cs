@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
 
     [Header("Attachments")]
     [SerializeField] GameObject primaryWeapon;
+    [SerializeField] GameObject deathExplosion;
         
     [Header("Timers")]
     [SerializeField] float refireTimer = 1f;
@@ -25,7 +26,7 @@ public class Player : MonoBehaviour {
 
     private void Start() {
         SetupBounds();
-        //StartCoroutine(PrintSomething());
+        //StartCoroutine(WarningText());
         uiController = FindObjectOfType<UIController>();
         gameController = FindObjectOfType<GameController>();
         uiController.SetPlayerHP(hitPoints);
@@ -86,10 +87,10 @@ public class Player : MonoBehaviour {
         }
     }
 
-    IEnumerator PrintSomething() {
-        print("Print somethign now.");
+    IEnumerator WarningText() {
+        print("Early Warning");
         yield return new WaitForSeconds(3);
-        print("3s has passed");
+        print("Time Up");
 
     }
 
@@ -109,16 +110,23 @@ public class Player : MonoBehaviour {
         if (hitPoints < 0) hitPoints = 0;
         uiController.SetPlayerHP(hitPoints);
         if (hitPoints <= 0) {
-            print("PLAYER DEAD");
-
-            if (gameController.playerLives > 0) {
-                gameController.SubtractPlayerLife();
-            }
-
-            gameController.Respawn();
-
-            Destroy(gameObject);
+            PlayerDeath();
         }
+    }
+
+
+    void PlayerDeath() {
+
+        GameObject exploder = Instantiate(deathExplosion, transform.position, Quaternion.identity);
+        exploder.GetComponent<ParticleSystem>().Play();
+        Destroy(exploder, 1f);
+
+        if (gameController.playerLives > 0) {
+            gameController.SubtractPlayerLife();
+        }
+
+        gameController.Respawn();
+        Destroy(gameObject);
     }
 
 

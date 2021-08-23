@@ -5070,7 +5070,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385008220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.099, y: -8.135, z: -2.041062}
+  m_LocalPosition: {x: -2.957, y: -11.032, z: -2.041062}
   m_LocalScale: {x: 2.4367, y: 2.4367, z: 2.4367}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5308,7 +5308,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5424,7 +5424,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5740,7 +5740,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 500
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -6435,10 +6435,10 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
-      minMaxState: 1
+      minMaxState: 3
       minColor: {r: 1, g: 1, b: 1, a: 1}
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
@@ -6472,8 +6472,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 0.98039216, g: 0.4477012, b: 0.043137226, a: 1}
+        key1: {r: 0.9607843, g: 0.95628446, b: 0.0588235, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -10042,7 +10042,7 @@ GameObject:
   - component: {fileID: 810172383}
   - component: {fileID: 810172382}
   - component: {fileID: 810172381}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BottomBumper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10442,7 +10442,7 @@ Transform:
   - {fileID: 379809797}
   - {fileID: 810260013}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1129682035
 GameObject:
@@ -10864,7 +10864,7 @@ GameObject:
   - component: {fileID: 1701183719}
   - component: {fileID: 1701183718}
   - component: {fileID: 1701183717}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: TopBumper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10921,7 +10921,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1911616857
 GameObject:
@@ -10986,7 +10986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 0
-  playerLives: 2
+  playerLives: 5
   player: {fileID: 1367917647499301591, guid: a22569dd2222a3346a0f821dd8dec51a, type: 3}
   spawnLocation: {fileID: 1492750566}
 --- !u!4 &1918789664 stripped
@@ -11162,6 +11162,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a22569dd2222a3346a0f821dd8dec51a, type: 3}
+--- !u!1001 &2927543591719526067
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2927543591005940640, guid: b26cf96e55d844d409e43796da337647,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -36.814045
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927543591005940640, guid: b26cf96e55d844d409e43796da337647,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.051727
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927543591005940640, guid: b26cf96e55d844d409e43796da337647,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.13916
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927543591005940640, guid: b26cf96e55d844d409e43796da337647,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927543591005940640, guid: b26cf96e55d844d409e43796da337647,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927543591005940640, guid: b26cf96e55d844d409e43796da337647,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927543591005940640, guid: b26cf96e55d844d409e43796da337647,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927543591005940640, guid: b26cf96e55d844d409e43796da337647,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927543591005940640, guid: b26cf96e55d844d409e43796da337647,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927543591005940640, guid: b26cf96e55d844d409e43796da337647,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927543591005940640, guid: b26cf96e55d844d409e43796da337647,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927543591005940643, guid: b26cf96e55d844d409e43796da337647,
+        type: 3}
+      propertyPath: m_Name
+      value: ExplosionParticles
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b26cf96e55d844d409e43796da337647, type: 3}
 --- !u!1001 &5592134301307535291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11217,7 +11286,7 @@ PrefabInstance:
     - target: {fileID: 5337321883874195372, guid: 4738d8457e2977a42b048225107398f0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5337321883874195372, guid: 4738d8457e2977a42b048225107398f0,
         type: 3}

@@ -98,8 +98,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   primaryWeaponSpeed: 850
-  hitPoints: 5
+  hitPoints: 1
   primaryWeapon: {fileID: 7673703374147241302, guid: 70764411cf96096488d3a15396a14822,
+    type: 3}
+  deathExplosion: {fileID: 2927543591005940643, guid: b26cf96e55d844d409e43796da337647,
     type: 3}
   refireTimer: 0.2
   refireTime: 0.2
