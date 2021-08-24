@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7658826588268111935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7658826588268111933}
+  - component: {fileID: 7658826588268111930}
+  - component: {fileID: 7658826588268111932}
+  - component: {fileID: 7658826588268111931}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7658826588268111933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7658826588268111935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 361.8453, y: 502.7061, z: -5.5848436}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7658826588268111930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7658826588268111935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc65729e498d7604cb2e7d185ac0a9df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 0
+  playerLives: 5
+  player: {fileID: 1367917647499301591, guid: a22569dd2222a3346a0f821dd8dec51a, type: 3}
+  spawnLocation: {fileID: 0}
+--- !u!114 &7658826588268111932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7658826588268111935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34dc5013a81529f42bd3f28b83a195a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveLabel: {fileID: 0}
+  pointsLabel: {fileID: 0}
+  playerHPLabel: {fileID: 0}
+  playerLifeIcon: {fileID: 5495807553579106044, guid: 22a9a023a94730740a7316c3f666dfa5,
+    type: 3}
+  lifeContainer: {fileID: 0}
+--- !u!114 &7658826588268111931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7658826588268111935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d32a25ef641d646a6f3aa29db19b00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
