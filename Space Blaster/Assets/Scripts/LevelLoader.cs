@@ -9,4 +9,13 @@ public class LevelLoader : MonoBehaviour {
         SceneManager.LoadScene(levelName);
     }
 
+    public void LoadGameOver() {
+        StartCoroutine(WaitThenLoad());
+    }
+
+    IEnumerator WaitThenLoad() {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("GameOver");
+    }
+
 }

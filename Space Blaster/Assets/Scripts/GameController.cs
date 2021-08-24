@@ -10,9 +10,11 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject player;
     [SerializeField] Transform spawnLocation;
     UIController uiController;
+    LevelLoader levelLoader;
 
     private void Start() {
         uiController = GetComponent<UIController>();
+        levelLoader = GetComponent<LevelLoader>();
         StartGame();
     }
 
@@ -39,7 +41,7 @@ public class GameController : MonoBehaviour {
         if (playerLives > 0) {
             StartCoroutine(SpawnNewPlayer());
         } else {
-            SceneManager.LoadScene("GameOver");
+            levelLoader.LoadGameOver();
         }
     }
 

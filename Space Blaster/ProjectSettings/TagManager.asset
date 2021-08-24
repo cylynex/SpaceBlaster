@@ -45,3 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ships
+    uniqueID: 4032188949
+    locked: 0
+  - name: Projectiles
+    uniqueID: 3502892513
+    locked: 0
