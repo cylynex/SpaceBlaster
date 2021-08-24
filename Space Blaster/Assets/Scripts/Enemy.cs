@@ -12,6 +12,11 @@ public class Enemy : MonoBehaviour {
     [SerializeField] Vector2 shootDelayRange = new Vector2(1,2.5f);
     [SerializeField] GameObject enemyProjectile;
     [SerializeField] float enemyWeaponSpeed = 15f;
+
+    [Header("Sounds")]
+    AudioSource audio;
+    [SerializeField] AudioClip deathSound;
+    [SerializeField][Range(0,1)] float deathSoundVolume = 0.75f;
     
     [Header("Internal")]
     [SerializeField] public List<Transform> waypoints = new List<Transform>();
@@ -32,6 +37,7 @@ public class Enemy : MonoBehaviour {
         hitPoints = startingHitPoints;
 
         gameController = FindObjectOfType<GameController>();
+        audio = GetComponent<AudioSource>();
 
         int shootSetup = Random.Range(0, 4);
         if (shootSetup == 0) {
@@ -93,7 +99,8 @@ public class Enemy : MonoBehaviour {
 
     void DestroyEnemy() {
         gameController.ScorePoints(pointValue);
-        GameObject exploder = Instantiate(explosion, transform.position, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+        GameObject exploder = Instantiate(explosion,transform.position, Quaternion.identity);
         exploder.GetComponent<ParticleSystem>().Play();
         Destroy(exploder, 2f);
         Destroy(gameObject);

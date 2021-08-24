@@ -12,7 +12,12 @@ public class Player : MonoBehaviour {
     [Header("Attachments")]
     [SerializeField] GameObject primaryWeapon;
     [SerializeField] GameObject deathExplosion;
-        
+
+    [Header("Sounds")]
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip shootSound;
+    AudioSource playerAudio;
+
     [Header("Timers")]
     [SerializeField] float refireTimer = 1f;
     [SerializeField] float refireTime = 0f;
@@ -30,6 +35,7 @@ public class Player : MonoBehaviour {
         uiController = FindObjectOfType<UIController>();
         gameController = FindObjectOfType<GameController>();
         uiController.SetPlayerHP(hitPoints);
+        playerAudio = GetComponent<AudioSource>();
     }
 
     private void Update() {
@@ -59,7 +65,8 @@ public class Player : MonoBehaviour {
     }
 
     private void Shoot() {
-        if (Input.GetButton("Fire1") && canFire) { 
+        if (Input.GetButton("Fire1") && canFire) {
+            AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
             GameObject mainWeapon = Instantiate(primaryWeapon, transform.position, Quaternion.identity);
             mainWeapon.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, primaryWeaponSpeed));
             canFire = false;
@@ -116,10 +123,11 @@ public class Player : MonoBehaviour {
 
 
     void PlayerDeath() {
-
         GameObject exploder = Instantiate(deathExplosion, transform.position, Quaternion.identity);
         exploder.GetComponent<ParticleSystem>().Play();
         Destroy(exploder, 1f);
+        
+        AudioSource.PlayClipAtPoint(deathSound, transform.position);
 
         if (gameController.playerLives > 0) {
             gameController.SubtractPlayerLife();

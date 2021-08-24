@@ -52,6 +52,9 @@ MonoBehaviour:
   shootDelayRange: {x: 1, y: 2.5}
   enemyProjectile: {fileID: 7673703374147241302, guid: 1d83a003069507141b3bf05bb940eea8,
     type: 3}
+  enemyWeaponSpeed: 15
+  deathSound: {fileID: 8300000, guid: 022db0dd3ddc01a4686a96a9a35d4527, type: 3}
+  deathSoundVolume: 0.75
   waypoints: []
   waypointIndex: 0
   hitPoints: 0
