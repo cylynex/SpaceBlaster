@@ -11261,6 +11261,11 @@ PrefabInstance:
       propertyPath: spawnLocation
       value: 
       objectReference: {fileID: 1492750566}
+    - target: {fileID: 7658826588268111930, guid: 86e3837ba656d014da99e54ba258f28f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7658826588268111933, guid: 86e3837ba656d014da99e54ba258f28f,
         type: 3}
       propertyPath: m_LocalPosition.x

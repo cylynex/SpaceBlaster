@@ -13,6 +13,10 @@ public class GameController : MonoBehaviour {
 
     private void Start() {
         uiController = GetComponent<UIController>();
+        StartGame();
+    }
+
+    public void StartGame() {
         UpdateScoreBoard();
         uiController.SetPlayerLives(playerLives);
     }

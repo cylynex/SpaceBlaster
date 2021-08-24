@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 0
-  playerLives: 5
+  playerLives: 2
   player: {fileID: 1367917647499301591, guid: a22569dd2222a3346a0f821dd8dec51a, type: 3}
   spawnLocation: {fileID: 0}
 --- !u!114 &7658826588268111932
